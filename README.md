@@ -1,17 +1,13 @@
-# prudence
-Wrapper to GitHub search API
-
-This code is in early development stage.
-
-Please see the [wiki](https://github.com/numical/prudence/wiki) for more detail.
+# Branch Visualiser
+Spike into visualising version control branches
 
 ## Pre-requisites
 node 8+
 
 ## Installation
 ```
-git clone https://github.com/numical/prudence.git
-cd prudence
+git clone https://github.com/numical/branch-visualiser.git
+cd branch-visualiser
 npm install
 ```
 
@@ -20,7 +16,7 @@ With hot module replacement:
 ```
 npm start
 ```
-Then point browser at http://localhost:1234
+Then point browser at http://localhost:1971
 
 ## Build
 ```

@@ -1,23 +1,16 @@
 {
   "name": "prudence",
   "version": "0.0.1",
-  "description": "Wrapper to GitHub Search API",
+  "description": "Spike into visualising version control branches",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "rimraf ./dist && parcel build index.html",
-    "test": "npm-run-all --parallel --race test:startHttpServer test:runSeleniumTests",
-    "test:startHttpServer": "http-server ./dist -s -p 8080",
-    "test:runSeleniumTests": "mocha"
+    "start": "parcel index.html  --port 1971 --open",
+    "build": "rimraf ./dist && parcel build index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/numical/prudence.git"
+    "url": "git+https://github.com/numical/branch-visualiser.git"
   },
-  "keywords": [
-    "github",
-    "search"
-  ],
   "author": "Mike Evans <mike.evans@numical.com>",
   "license": "MIT",
   "bugs": {
@@ -27,19 +20,16 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "svg.js": "^2.7.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "chai": "^4.1.2",
-    "http-server": "^0.11.1",
-    "mocha": "^5.2.0",
-    "npm-run-all": "^4.1.3",
     "parcel-bundler": "^1.10.0",
-    "rimraf": "^2.6.2",
-    "selenium-webdriver": "^4.0.0-alpha.1"
+    "rimraf": "^3.0.0"
   }
 }
