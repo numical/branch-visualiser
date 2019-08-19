@@ -22,13 +22,3 @@ Then point browser at http://localhost:1971
 ```
 npm run build
 ```
-
-## Test
-Requires selenium installed - see [wiki](https://github.com/numical/prudence/wiki) for more on this.
-Then:
-```
-npm test
-```
-
-## Design
-See [wiki](https://github.com/numical/prudence/wiki).
