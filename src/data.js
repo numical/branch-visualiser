@@ -9,6 +9,9 @@ export default {
                 },
                 {
                     name: 'release/19.15'
+                },
+                {
+                    name: 'feature/xxx'
                 }
             ]
         },
@@ -20,7 +23,7 @@ export default {
                     name: 'olive-develop'
                 },
                 {
-                    name: 'feature/xxx'
+                    name: 'feature/yyy'
                 }
             ]
         }

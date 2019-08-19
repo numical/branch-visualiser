@@ -1,8 +1,9 @@
 import React from 'react';
 import constants from './constants';
+import Branch from './Branch';
 
 function Repo(props) {
-    const { repo, index } = props;
+    const { repo, yOffset } = props;
     const { name, description, branches } = repo;
     const { width } = constants.svg;
     const { gap, height, indent } = constants.repo;
@@ -41,7 +42,7 @@ function Repo(props) {
         fontSize: 15
     };
 
-    const transform = `translate(0, ${index * (height + gap)})`;
+    const transform = `translate(0, ${yOffset})`;
 
     return (
         <g transform={transform}>
@@ -52,9 +53,10 @@ function Repo(props) {
             <text {...descriptionProps}>
                 {description}
             </text>
-            <text {...masterProps}  >
+            <text {...masterProps}>
                 MASTER
             </text>
+            {branches.map((branch, index) => <Branch branch={branch} index={index} key={branch.name} />)}
         </g>
     );
 }

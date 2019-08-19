@@ -9,7 +9,8 @@ export default {
         height: 50
     },
     branch : {
+        indent: 30,
         height: 50,
-        gap: 20
+        gap: 10
     }
 };

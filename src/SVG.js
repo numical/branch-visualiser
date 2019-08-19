@@ -3,6 +3,11 @@ import data from './data';
 import Repo from './Repo';
 import constants from './constants';
 
+const { repo, branch } = constants;
+
+const calculateYOffset = (index, array) => index === 0 ? 0 : index * (repo.height + repo.gap) + array[index -1].branches.length * (branch.height + branch.gap);
+
+
 function Repos() {
     const { repos } = data;
     return (
@@ -17,7 +22,7 @@ function Repos() {
                     <stop offset="95%" stopColor="yellow" />
                 </linearGradient>
             </defs>
-            {repos.map((repo, index) => <Repo repo={repo} index={index} key={repo.name} />)}
+            {repos.map((repo, index, array) => <Repo repo={repo} yOffset={calculateYOffset(index, array)} key={repo.name} />)}
         </svg>
     )
 }

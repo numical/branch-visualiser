@@ -4,12 +4,34 @@ import constants from './constants';
 function Branch(props) {
     const { branch, index } = props
     const { name } = branch;
-    const { height, gap } = constants.branch;
-    const rectY = index * (height + gap);
+    const { gap, height, indent } = constants.branch;
+
+    const xOffset = (index + 1) * indent;
+    const yOffset = (constants.repo.height + gap) + index * (height + gap);
+
+    const rectProps = {
+        x: xOffset,
+        y: yOffset,
+        width: constants.svg.width - xOffset - constants.repo.indent,
+        height,
+        rx: 5,
+        fill: "url('#branchGradient')"
+    };
+
+    const nameProps = {
+        x: xOffset + 10,
+        y: yOffset + 20,
+        fontFamily: "Verdana",
+        fontSize: 10,
+        fill:"black",
+        fontWeight: "bold"
+    };
+
+
     return (
         <g>
-            <rect x="10" y = {rectY} width="80%" height={height} rx="5" fill="url('#branchGradient')" />
-            <text x="20" y={rectY + 20} font-family="Verdana" font-size="10" font-weight="bold" fill="white">
+            <rect {...rectProps}/>
+            <text {...nameProps}>
                 {name}
             </text>
         </g>
