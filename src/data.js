@@ -5,13 +5,16 @@ export default {
             description: "Private API",
             branches: [
                 {
-                    name: 'release/19.13'
+                    name: 'release/19.13',
+                    start: '11/08/19'
                 },
                 {
-                    name: 'release/19.15'
+                    name: 'release/19.15',
+                    start: '01/08/19'
                 },
                 {
-                    name: 'feature/xxx'
+                    name: 'feature/xxx',
+                    start: '13/08/19'
                 }
             ]
         },
@@ -20,10 +23,12 @@ export default {
             description: "UI Monorepo",
             branches: [
                 {
-                    name: 'olive-develop'
+                    name: 'olive-develop',
+                    start: '10/07/19'
                 },
                 {
-                    name: 'feature/yyy'
+                    name: 'feature/yyy',
+                    start: '04/08/19'
                 }
             ]
         }

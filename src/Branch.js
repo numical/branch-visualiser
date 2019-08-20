@@ -3,7 +3,7 @@ import constants from './constants';
 
 function Branch(props) {
     const { branch, index } = props
-    const { name } = branch;
+    const { name, start } = branch;
     const { gap, height, indent } = constants.branch;
 
     const xOffset = (index + 1) * indent;
@@ -27,12 +27,33 @@ function Branch(props) {
         fontWeight: "bold"
     };
 
+    const lineProps = {
+        x1: xOffset,
+        y1: constants.repo.height,
+        x2: xOffset,
+        y2: yOffset + height,
+        stroke: 'black',
+        strokeWidth: 3
+    };
+
+    const startDateProps = {
+        x: xOffset - 10,
+        y: yOffset,
+        fontFamily: "Verdana",
+        fontSize: 10,
+        fill:"black",
+        transform: `rotate(90, ${xOffset - 10}, ${yOffset})`
+    };
 
     return (
         <g>
             <rect {...rectProps}/>
             <text {...nameProps}>
                 {name}
+            </text>
+            <line {...lineProps} />
+            <text {...startDateProps}>
+                {start}
             </text>
         </g>
     );
