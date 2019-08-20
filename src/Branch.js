@@ -3,10 +3,10 @@ import constants from './constants';
 
 function Branch(props) {
     const { branch, index } = props
-    const { name, start } = branch;
+    const { name, order, start } = branch;
     const { gap, height, indent } = constants.branch;
 
-    const xOffset = (index + 1) * indent;
+    const xOffset = order * indent;
     const yOffset = (constants.repo.height + gap) + index * (height + gap);
 
     const rectProps = {
@@ -33,6 +33,7 @@ function Branch(props) {
         x2: xOffset,
         y2: yOffset + height,
         stroke: 'black',
+        strokeDasharray: "2, 1",
         strokeWidth: 3
     };
 
