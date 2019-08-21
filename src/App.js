@@ -2,15 +2,15 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import SVG from './SVG';
-import dimensions from './dimensions';
 import data from './data';
+import useWindowDimensions from "./useWindowDimensions";
 
 function App() {
 
     const { repos } = data;
-
+    const dimensions = useWindowDimensions();
     const svgProps = {
-        dimensions: dimensions(),
+        dimensions,
         repos
     };
 
