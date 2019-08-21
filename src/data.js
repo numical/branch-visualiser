@@ -14,7 +14,8 @@ export default {
                 },
                 {
                     name: 'feature/xxx',
-                    start: '13/08/19'
+                    start: '13/08/19',
+                    end: '17/08/19'
                 }
             ]
         },
@@ -28,7 +29,8 @@ export default {
                 },
                 {
                     name: 'feature/yyy',
-                    start: '04/08/19'
+                    start: '04/08/19',
+                    end: '12/08/19'
                 }
             ]
         }

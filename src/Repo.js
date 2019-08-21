@@ -1,5 +1,5 @@
 import React from 'react';
-import constants from './constants';
+import constants from './dimensions';
 import Branch from './Branch';
 
 function Repo(props) {

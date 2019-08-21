@@ -1,18 +1,20 @@
 import React from 'react';
-import constants from './constants';
+import dimensions from './dimensions';
+import Line from './Line';
 
 function Branch(props) {
     const { branch, index } = props
-    const { name, order, start } = branch;
-    const { gap, height, indent } = constants.branch;
+    const { name, startLine, endLine } = branch;
+    const { gap, height, indent } = dimensions.branch;
 
-    const xOffset = order * indent;
-    const yOffset = (constants.repo.height + gap) + index * (height + gap);
+    const xOffset = startLine.order * indent;
+    const yOffset = (dimensions.repo.height + gap) + index * (height + gap);
+    const width = endLine ? (endLine.order - startLine.order) * indent : dimensions.svg.width - xOffset - dimensions.repo.indent;
 
     const rectProps = {
         x: xOffset,
         y: yOffset,
-        width: constants.svg.width - xOffset - constants.repo.indent,
+        width,
         height,
         rx: 5,
         fill: "url('#branchGradient')"
@@ -27,23 +29,22 @@ function Branch(props) {
         fontWeight: "bold"
     };
 
-    const lineProps = {
-        x1: xOffset,
-        y1: constants.repo.height,
-        x2: xOffset,
-        y2: yOffset + height,
-        stroke: 'black',
-        strokeDasharray: "2, 1",
-        strokeWidth: 3
+    const startLineProps = {
+        x: xOffset,
+        y: yOffset,
+        text: startLine.text
     };
 
-    const startDateProps = {
-        x: xOffset - 10,
-        y: yOffset,
-        fontFamily: "Verdana",
-        fontSize: 10,
-        fill:"black",
-        transform: `rotate(90, ${xOffset - 10}, ${yOffset})`
+    const conditionalEndLine = () => {
+        if (endLine) {
+            const endLineProps = {
+                x: xOffset + width,
+                y: yOffset,
+                text: endLine.text,
+                isEnd: true
+            };
+            return <Line {...endLineProps} />;
+        }
     };
 
     return (
@@ -52,11 +53,10 @@ function Branch(props) {
             <text {...nameProps}>
                 {name}
             </text>
-            <line {...lineProps} />
-            <text {...startDateProps}>
-                {start}
-            </text>
+            <Line {...startLineProps} />
+            {conditionalEndLine()}
         </g>
+
     );
 }
 
