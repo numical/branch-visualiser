@@ -1,8 +1,7 @@
 import React from 'react';
-import dimensions from './dimensions';
 
 function Line(props) {
-    const { x, y, text, isEnd } = props;
+    const { x, y, text, isEnd, dimensions } = props;
 
     const lineProps = {
         x1: x,

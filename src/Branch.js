@@ -1,9 +1,8 @@
 import React from 'react';
-import dimensions from './dimensions';
 import Line from './Line';
 
 function Branch(props) {
-    const { branch, index } = props
+    const { branch, index, dimensions } = props
     const { name, startLine, endLine } = branch;
     const { gap, height, indent } = dimensions.branch;
 
@@ -32,7 +31,8 @@ function Branch(props) {
     const startLineProps = {
         x: xOffset,
         y: yOffset,
-        text: startLine.text
+        text: startLine.text,
+        dimensions
     };
 
     const conditionalEndLine = () => {
@@ -41,7 +41,8 @@ function Branch(props) {
                 x: xOffset + width,
                 y: yOffset,
                 text: endLine.text,
-                isEnd: true
+                isEnd: true,
+                dimensions
             };
             return <Line {...endLineProps} />;
         }

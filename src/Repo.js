@@ -1,12 +1,11 @@
 import React from 'react';
-import constants from './dimensions';
 import Branch from './Branch';
 
 function Repo(props) {
-    const { repo, yOffset } = props;
-    const { name, description, branches } = repo;
-    const { width } = constants.svg;
-    const { gap, height, indent } = constants.repo;
+    const { repo, dimensions } = props;
+    const { name, description, branches, yOffset } = repo;
+    const { width } = dimensions.svg;
+    const { height, indent } = dimensions.repo;
 
     const rectProps = {
         x: indent,
@@ -56,7 +55,7 @@ function Repo(props) {
             <text {...masterProps}>
                 MASTER
             </text>
-            {branches.map((branch, index) => <Branch branch={branch} index={index} key={branch.name} />)}
+            {branches.map((branch, index) => <Branch branch={branch} index={index} key={branch.name} dimensions={dimensions}/>)}
         </g>
     );
 }

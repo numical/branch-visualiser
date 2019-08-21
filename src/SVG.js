@@ -1,13 +1,7 @@
 import React from 'react';
 import parse from 'date-fns/parse';
 import compareAsc from 'date-fns/compareAsc';
-import data from './data';
 import Repo from './Repo';
-import dimensions from './dimensions';
-
-const { repo, branch } = dimensions;
-
-const calculateYOffset = (index, array) => index === 0 ? 0 : index * (repo.height + repo.gap) + array[index -1].branches.length * (branch.height + branch.gap);
 
 const addLinesToBranch = (allLines, branch) => {
     if (branch.start) {
@@ -35,17 +29,24 @@ const createBranchLines = repos => {
     return allLines;
 };
 
-const setBranchIndent = lines => dimensions.branch.indent = dimensions.svg.width / (lines.length + 2);
+const setBranchIndent = (lines, dimensions) => dimensions.branch.indent = dimensions.svg.width / (lines.length + 2);
 
 const sortRepos = repos => {
     repos.forEach(repo => repo.branches.sort((branch1, branch2) => branch1.startLine.order - branch2.startLine.order)) ;
-}
+};
 
-function Repos() {
-    const { repos } = data;
+const setRepoYOffset = (repos, dimensions) => {
+    const repoY = dimensions.repo.height + dimensions.repo.gap;
+    const branchY = dimensions.branch.height + dimensions.branch.gap;
+    repos.forEach((repo, index, array) => repo.yOffset = index === 0 ? 0 : index * repoY+ array[index -1].branches.length * branchY);
+};
+
+function SVG(props) {
+    const { dimensions, repos } = props;
     const lines = createBranchLines(repos);
-    setBranchIndent(lines);
+    setBranchIndent(lines, dimensions);
     sortRepos(repos);
+    setRepoYOffset(repos, dimensions);
     return (
         <svg { ...dimensions.svg }>
             <defs>
@@ -58,9 +59,9 @@ function Repos() {
                     <stop offset="95%" stopColor="yellow" />
                 </linearGradient>
             </defs>
-            {repos.map((repo, index, array) => <Repo repo={repo} yOffset={calculateYOffset(index, array)} key={repo.name} />)}
+            {repos.map(repo => <Repo repo={repo} key={repo.name} dimensions={dimensions} />)}
         </svg>
     )
 }
 
-export default Repos;
+export default SVG;

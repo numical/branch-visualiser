@@ -1,4 +1,4 @@
-export default {
+export default () => ({
     svg: {
         width: window.innerWidth * 0.99,
         height: window.innerHeight * 0.95
@@ -13,4 +13,4 @@ export default {
         height: 50,
         gap: 10
     }
-};
+});
