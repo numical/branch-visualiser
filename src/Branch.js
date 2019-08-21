@@ -3,7 +3,7 @@ import Line from './Line';
 
 function Branch(props) {
     const { branch, index, dimensions } = props
-    const { name, startLine, endLine } = branch;
+    const { name, description, team, startLine, endLine } = branch;
     const { gap, height, indent } = dimensions.branch;
 
     const xOffset = startLine.order * indent;
@@ -19,13 +19,22 @@ function Branch(props) {
         fill: "url('#branchGradient')"
     };
 
-    const nameProps = {
+    const commonTextProps = {
         x: xOffset + 10,
-        y: yOffset + 20,
         fontFamily: "Verdana",
         fontSize: 10,
-        fill:"black",
+        fill:"black"
+    };
+
+    const nameProps = {
+        ...commonTextProps,
+        y: yOffset + 20,
         fontWeight: "bold"
+    };
+
+    const descriptionProps = {
+        ...commonTextProps,
+        y: yOffset + 40
     };
 
     const startLineProps = {
@@ -53,6 +62,9 @@ function Branch(props) {
             <rect {...rectProps}/>
             <text {...nameProps}>
                 {name}
+            </text>
+            <text {...descriptionProps}>
+                {`${description} (${team})`}
             </text>
             <Line {...startLineProps} />
             {conditionalEndLine()}
