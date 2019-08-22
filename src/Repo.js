@@ -2,22 +2,17 @@ import React from 'react';
 import Branch from './Branch';
 
 function Repo(props) {
-    const { repo, dimensions } = props;
-    const { name, description, branches, yOffset } = repo;
-    const { width } = dimensions.svg;
-    const { height, indent } = dimensions.repo;
+    const { repo } = props;
+    const { name, description, branches, dimensions, translate } = repo;
 
     const rectProps = {
-        x: indent,
-        y: 0,
-        width: width - indent * 2,
-        height,
+        ...dimensions,
         rx: 5,
         fill: "url('#repoGradient')"
     };
 
     const commonTextProps = {
-        x: indent + 10,
+        x: dimensions.x + 10,
         fontFamily: "Verdana",
         fontSize: 10,
         fill:"white"
@@ -36,12 +31,12 @@ function Repo(props) {
 
     const masterProps = {
         ...commonTextProps,
-        x: rectProps.width - 100,
+        x: dimensions.width - 100,
         y: 30,
         fontSize: 15
     };
 
-    const transform = `translate(0, ${yOffset})`;
+    const transform = `translate(${translate.x}, ${translate.y})`;
 
     return (
         <g transform={transform}>
@@ -55,7 +50,7 @@ function Repo(props) {
             <text {...masterProps}>
                 MASTER
             </text>
-            {branches.map((branch, index) => <Branch branch={branch} index={index} key={branch.name} dimensions={dimensions}/>)}
+            {branches.map(branch => <Branch branch={branch} key={branch.name} />)}
         </g>
     );
 }

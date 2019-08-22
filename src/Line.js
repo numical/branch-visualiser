@@ -1,27 +1,25 @@
 import React from 'react';
 
 function Line(props) {
-    const { x, y, text, isEnd, dimensions } = props;
+    const { dimensions, isEnd, text } = props;
 
     const lineProps = {
-        x1: x,
-        y1: dimensions.repo.height,
-        x2: x,
-        y2: y + dimensions.branch.height,
+        ...dimensions,
         stroke: 'black',
         strokeDasharray: "2, 1",
         strokeWidth: 3
     };
 
-    const xOffset = isEnd ? x + 5 : x - 10;
+    const x = isEnd ? dimensions.x1 + 10 : dimensions.x1 - 5;
+    const y = dimensions.y2;
 
     const dateProps = {
-        x: xOffset,
+        x,
         y,
         fontFamily: "Verdana",
         fontSize: 10,
         fill:"black",
-        transform: `rotate(90, ${xOffset}, ${y})`
+        transform: `rotate(270, ${x}, ${y})`
     };
 
     return (

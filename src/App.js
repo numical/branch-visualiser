@@ -7,11 +7,10 @@ import useWindowDimensions from "./useWindowDimensions";
 
 function App() {
 
-    const { repos } = data;
     const dimensions = useWindowDimensions();
     const svgProps = {
-        dimensions,
-        repos
+        data,
+        dimensions
     };
 
     return (
