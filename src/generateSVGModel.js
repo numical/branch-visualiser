@@ -55,7 +55,7 @@ const setDimensions = (repos, branchIndent, dimensions) => {
             const { startLine, endLine } =  branch;
             const x = startLine.order * branchIndent;
             const y = (dimensions.repo.height + dimensions.branch.gap) + index * (dimensions.branch.height + dimensions.branch.gap);
-            const width = endLine ? (endLine.order - startLine.order) * branchIndent : dimensions.svg.width - x - dimensions.repo.indent;
+            const width = endLine ? (endLine.order - startLine.order) * branchIndent : dimensions.svg.width - x;
             branch.dimensions = {
                 x,
                 y,
