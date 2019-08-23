@@ -20,7 +20,9 @@ export default {
                     name: 'feature/xxx',
                     description: 'xxx',
                     start: '13/08/19',
+                    from: 'release/19.13',
                     end: '17/08/19',
+                    to: 'release/19.13',
                     team: 'yellow'
                 }
             ]
@@ -39,6 +41,7 @@ export default {
                     name: 'feature/yyy',
                     description: 'yyy',
                     start: '04/08/19',
+                    from: 'olive-develop',
                     end: '12/08/19',
                     team: 'olive'
                 }
