@@ -14,11 +14,18 @@ npm install
 ## Development
 With hot module replacement:
 ```
-npm start
+npm run:dev
 ```
-Then point browser at http://localhost:1971
+Then point browser at http://localhost:8080 (if it does not open automatically).
+  
+Note this starts ***two*** servers:
+* webpack-dev-server (port 8080)
+* data server (port 1971) 
 
 ## Build
 ```
 npm run build
 ```
+
+## Deploy
+Copy contents of ```public``` to your server's webroot.
