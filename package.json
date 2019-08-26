@@ -4,7 +4,8 @@
   "description": "Spike into visualising version control branches",
   "main": "index.js",
   "scripts": {
-    "start": "rimraf public && webpack-dev-server",
+    "start:client": "rimraf public && webpack-dev-server",
+    "start:server": "node ./src/server/server.js",
     "build": "rimraf public && webpack --mode=production"
   },
   "repository": {
@@ -18,8 +19,10 @@
   },
   "homepage": "https://github.com/numical/prudence#readme",
   "dependencies": {
+    "chokidar": "^3.0.2",
     "core-js": "^3.2.1",
     "date-fns": "^2.0.0-beta.5",
+    "express": "^4.17.1",
     "prop-types": "^15.6.2",
     "ramda": "^0.26.1",
     "react": "^16.4.2",
