@@ -1,4 +1,5 @@
-import 'babel-polyfill';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import React from 'react';
 import { render } from 'react-dom';
 import SVG from './SVG';
@@ -21,3 +22,4 @@ function App() {
 }
 
 render(<App />, document.getElementById('app'));
+

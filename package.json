@@ -4,8 +4,8 @@
   "description": "Spike into visualising version control branches",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html  --port 1971 --open",
-    "build": "rimraf ./dist && parcel build index.html"
+    "start": "rimraf public && webpack-dev-server",
+    "build": "rimraf public && webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -18,19 +18,23 @@
   },
   "homepage": "https://github.com/numical/prudence#readme",
   "dependencies": {
+    "core-js": "^3.2.1",
     "date-fns": "^2.0.0-beta.5",
     "prop-types": "^15.6.2",
     "ramda": "^0.26.1",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "regenerator-runtime": "^0.13.3",
+    "webpack": "^4.39.2",
+    "webpack-dev-server": "^3.8.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.10.0",
-    "rimraf": "^3.0.0"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.4",
+    "rimraf": "^3.0.0",
+    "webpack-cli": "^3.3.7"
   }
 }
