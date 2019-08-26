@@ -1,10 +1,12 @@
 {
-  "name": "prudence",
+  "name": "branch-visualiser",
   "version": "0.0.1",
   "description": "Spike into visualising version control branches",
   "main": "index.js",
   "scripts": {
-    "start:client": "rimraf public && webpack-dev-server",
+    "dev": "run-p start:server start:client",
+    "start": "npm run start:server",
+    "start:client": "webpack-dev-server",
     "start:server": "node ./src/server/server.js",
     "build": "rimraf public && webpack --mode=production"
   },
@@ -15,9 +17,9 @@
   "author": "Mike Evans <mike.evans@numical.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/numical/prudence/issues"
+    "url": "https://github.com/numical/branch-visualiser/issues"
   },
-  "homepage": "https://github.com/numical/prudence#readme",
+  "homepage": "https://github.com/numical/branch-visualiser#readme",
   "dependencies": {
     "chokidar": "^3.0.2",
     "core-js": "^3.2.1",
@@ -37,6 +39,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
+    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.0",
     "webpack-cli": "^3.3.7"
   }

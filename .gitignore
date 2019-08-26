@@ -63,7 +63,6 @@ typings/
 # IDE
 .idea
 
-# parcel
-.cache
-dist
+# build
+public
 

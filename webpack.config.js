@@ -26,10 +26,12 @@ module.exports = {
     filename: 'branch-visualiser.js'
   },
   devServer: {
-    contentBase: './public',
     hot: true,
     open: true,
-    port: 1971
+    port: 8080,
+    proxy: {
+      '/repos' : 'http://localhost:1971'
+    }
   },
   plugins: [
     new HotModuleReplacementPlugin(),

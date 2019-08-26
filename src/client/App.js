@@ -3,12 +3,13 @@ import "regenerator-runtime/runtime";
 import React from 'react';
 import { render } from 'react-dom';
 import SVG from './SVG';
-import data from './data';
+import useRemoteData from "./useRemoteData";
 import useWindowDimensions from "./useWindowDimensions";
 
 function App() {
 
     const dimensions = useWindowDimensions();
+    const data = useRemoteData();
     const svgProps = {
         data,
         dimensions
