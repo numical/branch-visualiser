@@ -1,12 +1,10 @@
 import React from 'react';
 import Repo from './Repo';
-import generateSVGModel from "./generateSVGModel";
 
 function SVG(props) {
-    const { data, dimensions } = props;
-    const repos = generateSVGModel(data, dimensions);
+    const { repos, dimensions } = props;
     return (
-        <svg { ...dimensions.svg }>
+        <svg { ...dimensions.svg } overflow="auto" >
             <defs>
                 <linearGradient id="repoGradient" gradientTransform="rotate(90)">
                     <stop offset="5%"  stopColor="darkred" />

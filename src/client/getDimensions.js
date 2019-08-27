@@ -11,6 +11,7 @@ export default () => ({
     branch : {
         indent: 30,
         height: 50,
-        gap: 10
+        gap: 10,
+        minWidth: 100
     }
 });

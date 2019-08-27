@@ -29,18 +29,28 @@ const createBranchLines = repos => {
     return allLines;
 };
 
-const calcBranchIndent = (lines, dimensions) => dimensions.svg.width / (lines.length + 2);
-
 const sortBranches = repos => {
     repos.forEach(repo => repo.branches.sort((branch1, branch2) => branch1.startLine.order - branch2.startLine.order)) ;
 };
 
-const setDimensions = (repos, branchIndent, dimensions) => {
+const setDimensions = (lines, dimensions) => {
+    const d = clone(dimensions);
+    const indent = d.svg.width / (lines.length + 2);
+    if (indent < d.branch.minWidth) {
+        d.branch.indent = d.branch.minWidth;
+        d.svg.width = (d.branch.minWidth)  * (lines.length + 2);
+    } else {
+        d.branch.indent = indent;
+    }
+    return d;
+};
+
+const applyDimensions = (repos, dimensions) => {
     repos.forEach((repo, index, array) => {
         repo.dimensions = {
             x: dimensions.repo.indent,
             y: 0,
-            width: dimensions.svg.width - dimensions.repo.indent,
+            width: dimensions.svg.width - 2 * dimensions.repo.indent,
             height: dimensions.repo.height
         };
         repo.translate = {
@@ -53,9 +63,9 @@ const setDimensions = (repos, branchIndent, dimensions) => {
         }, {});
         repo.branches.forEach((branch, index) => {
             const { startLine, endLine } =  branch;
-            const x = startLine.order * branchIndent;
+            const x = startLine.order * dimensions.branch.indent;
             const y = (dimensions.repo.height + dimensions.branch.gap) + index * (dimensions.branch.height + dimensions.branch.gap);
-            const width = endLine ? (endLine.order - startLine.order) * branchIndent : dimensions.svg.width - x;
+            const width = endLine ? (endLine.order - startLine.order) * dimensions.branch.indent : dimensions.svg.width - x - dimensions.repo.indent;
             branch.dimensions = {
                 x,
                 y,
@@ -80,13 +90,13 @@ const setDimensions = (repos, branchIndent, dimensions) => {
     });
 };
 
-const generateSVGModel = (data, dimensions) => {
+const generateSVGModel = (data, initialDimensions) => {
     const repos = clone(data.repos);
     const lines = createBranchLines(repos);
     sortBranches(repos);
-    const branchIndent = calcBranchIndent(lines, dimensions);
-    setDimensions(repos, branchIndent, dimensions);
-    return repos;
+    const dimensions = setDimensions(lines, initialDimensions);
+    applyDimensions(repos, dimensions);
+    return { repos, dimensions };
 };
 
 export default generateSVGModel;
