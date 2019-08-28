@@ -10,7 +10,12 @@ function useRemoteData() {
             const data = await response.json();
             setData(data);
         };
-        fetchData();
+        const url = `ws://${window.location.hostname}:1972`;
+        const socket = new WebSocket(url);
+        // note: server sends message on connection hence fires first fetch
+        socket.addEventListener('message', function (event) {
+            fetchData();
+        });
     }, []);
 
     return data;
