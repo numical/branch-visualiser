@@ -2,8 +2,7 @@ import React from 'react';
 import Repo from './Repo';
 
 function SVG(props) {
-    const { data, dimensions } = props;
-    const repos = generateSVGModel(data, dimensions);
+    const { repos, dimensions } = props;
 
     const svgProps = {
         ...dimensions.svg,

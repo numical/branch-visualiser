@@ -90,7 +90,7 @@ const applyDimensions = (repos, dimensions) => {
     });
 };
 
-const generateSVGModel = (data, initialDimensions) => {
+const generateSVGProps = (data, initialDimensions) => {
     const repos = clone(data.repos);
     const lines = createBranchLines(repos);
     sortBranches(repos);
@@ -99,4 +99,4 @@ const generateSVGModel = (data, initialDimensions) => {
     return { repos, dimensions };
 };
 
-export default generateSVGModel;
+export default generateSVGProps;
