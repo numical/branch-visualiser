@@ -1,13 +1,13 @@
 import React from 'react';
 import Repo from './Repo';
-import generateSVGModel from "./generateSVGModel";
 
 function SVG(props) {
     const { data, dimensions } = props;
     const repos = generateSVGModel(data, dimensions);
 
     const svgProps = {
-        ...dimensions.svg
+        ...dimensions.svg,
+        overflow: "auto"
     };
     return (
         <svg { ...svgProps }>

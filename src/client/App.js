@@ -8,15 +8,11 @@ import useRemoteData from "./useRemoteData";
 import { RepoMenu, BranchMenu } from "./ContextMenus";
 import "../../node_modules/react-contexify/dist/ReactContexify.css";
 
-
 function App() {
 
     const dimensions = useWindowDimensions();
     const data = useRemoteData();
-    const svgProps = {
-        data,
-        dimensions
-    };
+    const svgProps = generateSVGModel(data, dimensions);
 
     return (
       <div>
