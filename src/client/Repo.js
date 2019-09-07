@@ -1,4 +1,5 @@
 import React from 'react';
+import { contextMenu } from 'react-contexify';
 import Branch from './Branch';
 
 function Repo(props) {
@@ -8,7 +9,8 @@ function Repo(props) {
     const rectProps = {
         ...dimensions,
         rx: 5,
-        fill: "url('#repoGradient')"
+        fill: "url('#repoGradient')",
+        onClick: event => contextMenu.show({ id: 'repoMenu', event, props }),
     };
 
     const commonTextProps = {

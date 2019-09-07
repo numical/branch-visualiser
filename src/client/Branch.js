@@ -1,5 +1,6 @@
 import React from 'react';
 import Line from './Line';
+import { contextMenu } from 'react-contexify';
 
 function Branch(props) {
     const { branch } = props;
@@ -8,7 +9,8 @@ function Branch(props) {
     const rectProps = {
         ...dimensions,
         rx: 5,
-        fill: "url('#branchGradient')"
+        fill: "url('#branchGradient')",
+        onClick: event => contextMenu.show({ id: 'branchMenu', event, props }),
     };
 
     const commonTextProps = {

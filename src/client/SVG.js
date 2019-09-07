@@ -5,8 +5,12 @@ import generateSVGModel from "./generateSVGModel";
 function SVG(props) {
     const { data, dimensions } = props;
     const repos = generateSVGModel(data, dimensions);
+
+    const svgProps = {
+        ...dimensions.svg
+    };
     return (
-        <svg { ...dimensions.svg }>
+        <svg { ...svgProps }>
             <defs>
                 <linearGradient id="repoGradient" gradientTransform="rotate(90)">
                     <stop offset="5%"  stopColor="darkred" />

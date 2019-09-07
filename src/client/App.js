@@ -3,8 +3,11 @@ import "regenerator-runtime/runtime";
 import React from 'react';
 import { render } from 'react-dom';
 import SVG from './SVG';
-import useRemoteData from "./useRemoteData";
 import useWindowDimensions from "./useWindowDimensions";
+import useRemoteData from "./useRemoteData";
+import { RepoMenu, BranchMenu } from "./ContextMenus";
+import "../../node_modules/react-contexify/dist/ReactContexify.css";
+
 
 function App() {
 
@@ -18,6 +21,8 @@ function App() {
     return (
       <div>
         <SVG {...svgProps} />
+        <RepoMenu />
+        <BranchMenu />
       </div>
     );
 }
