@@ -8,15 +8,15 @@ import {
   animation
 } from "react-contexify";
 
-const displayModal = (showModal, { event, props }) => {
-  const { repo, branch, setFocus } = props;
-  setFocus(repo || branch);
-  showModal();
+const displayModal = (showDialog, { event, props }) => {
+  const { repo, branch, setAction } = props;
+  setAction(repo || branch);
+  showDialog();
 };
 
 function RepoMenu(props) {
-  const { showModal } = props;
-  const onClick = displayModal.bind(null, showModal);
+  const { showDialog } = props;
+  const onClick = displayModal.bind(null, showDialog);
   return (
     <Menu id="repoMenu" theme={theme.light} animation={animation.fade}>
       <Item onClick={displayModal}>Edit...</Item>
@@ -28,8 +28,8 @@ function RepoMenu(props) {
 }
 
 function BranchMenu(props) {
-  const { showModal } = props;
-  const onClick = displayModal.bind(null, showModal);
+  const { showDialog } = props;
+  const onClick = displayModal.bind(null, showDialog);
 
   return (
     <Menu id="branchMenu" theme={theme.light} animation={animation.fade}>

@@ -3,7 +3,7 @@ import { contextMenu } from "react-contexify";
 import Branch from "./Branch";
 
 function Repo(props) {
-  const { repo, setFocus } = props;
+  const { repo, setAction } = props;
   const { name, description, branches, dimensions, translate } = repo;
 
   const rectProps = {
@@ -47,7 +47,7 @@ function Repo(props) {
       <text {...descriptionProps}>{description}</text>
       <text {...masterProps}>MASTER</text>
       {branches.map(branch => (
-        <Branch branch={branch} key={branch.name} setFocus={setFocus} />
+        <Branch branch={branch} key={branch.name} setAction={setAction} />
       ))}
     </g>
   );
