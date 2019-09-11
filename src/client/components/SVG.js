@@ -2,7 +2,7 @@ import React from "react";
 import Repo from "./Repo";
 
 function SVG(props) {
-  const { repos, dimensions, setAction } = props;
+  const { repos, dimensions } = props;
 
   const svgProps = {
     ...dimensions.svg,
@@ -21,7 +21,7 @@ function SVG(props) {
         </linearGradient>
       </defs>
       {repos.map(repo => (
-        <Repo repo={repo} key={repo.name} setAction={setAction} />
+        <Repo repo={repo} key={repo.name} />
       ))}
     </svg>
   );

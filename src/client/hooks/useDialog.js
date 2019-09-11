@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { useModal } from "react-modal-hook";
 import ReactModal from "react-modal";
 
+const nullFn = () => null;
+
 function useDialog() {
-  const [action, setAction] = useState();
-  const [showModal, hideModal] = useModal(
-    () => (
+  const [dialogContent, setDialogContent] = useState(nullFn);
+  const [showDialog, hideDialog] = useModal(() => {
+    return (
       <ReactModal isOpen>
-        <pre>{JSON.stringify(action, null, 2)}</pre>
-        <button onClick={hideModal}>Hide modal</button>
+        {dialogContent}
+        <button onClick={hideDialog}>Cancel</button>
       </ReactModal>
-    ),
-    [action]
-  );
-  return { showDialog: showModal, setAction };
+    );
+  }, [dialogContent]);
+  return { setDialogContent, showDialog };
 }
 
 export default useDialog;

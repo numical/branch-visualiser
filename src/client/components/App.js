@@ -2,6 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import React from "react";
 import { render } from "react-dom";
+import Modal from "react-modal";
 import { ModalProvider } from "react-modal-hook";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import useRemoteData from "../hooks/useRemoteData";
@@ -11,19 +12,13 @@ import { RepoMenu, BranchMenu } from "./ContextMenus";
 import generateSVGProps from "../util/generateSVGProps";
 import "react-contexify/dist/ReactContexify.css";
 
+Modal.setAppElement("#app");
+
 function App() {
   const data = useRemoteData();
   const dimensions = useWindowDimensions();
-  const { showDialog, setAction } = useDialog();
-
-  const menuProps = {
-    showDialog
-  };
-
-  const svgProps = {
-    ...generateSVGProps(data, dimensions),
-    setAction
-  };
+  const menuProps = useDialog();
+  const svgProps = generateSVGProps(data, dimensions);
 
   return (
     <div>

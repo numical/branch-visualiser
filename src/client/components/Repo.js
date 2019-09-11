@@ -3,14 +3,16 @@ import { contextMenu } from "react-contexify";
 import Branch from "./Branch";
 
 function Repo(props) {
-  const { repo, setAction } = props;
+  const { repo } = props;
   const { name, description, branches, dimensions, translate } = repo;
 
   const rectProps = {
     ...dimensions,
     rx: 5,
     fill: "url('#repoGradient')",
-    onClick: event => contextMenu.show({ id: "repoMenu", event, props })
+    onClick: event => {
+      contextMenu.show({ id: "repoMenu", event, props });
+    }
   };
 
   const commonTextProps = {
@@ -47,7 +49,7 @@ function Repo(props) {
       <text {...descriptionProps}>{description}</text>
       <text {...masterProps}>MASTER</text>
       {branches.map(branch => (
-        <Branch branch={branch} key={branch.name} setAction={setAction} />
+        <Branch branch={branch} key={branch.name} />
       ))}
     </g>
   );
