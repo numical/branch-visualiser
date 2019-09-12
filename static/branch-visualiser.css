@@ -1,0 +1,9 @@
+form {
+    display: grid;
+    grid-template-columns: auto 3fr;
+    grid-gap: 20px;
+}
+
+form label {
+    justify-self: right;
+}
