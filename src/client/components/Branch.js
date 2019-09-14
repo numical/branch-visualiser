@@ -10,7 +10,10 @@ function Branch(props) {
     ...dimensions,
     rx: 5,
     fill: "url('#branchGradient')",
-    onClick: event => contextMenu.show({ id: "branchMenu", event, props })
+    onClick: event => {
+      contextMenu.show({ id: "branchMenu", event, props });
+      event.stopPropagation();
+    }
   };
 
   const commonTextProps = {

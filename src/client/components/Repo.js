@@ -12,6 +12,7 @@ function Repo(props) {
     fill: "url('#repoGradient')",
     onClick: event => {
       contextMenu.show({ id: "repoMenu", event, props });
+      event.stopPropagation();
     }
   };
 
