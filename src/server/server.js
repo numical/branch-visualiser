@@ -49,7 +49,7 @@ app.get("/repos", getRepos(getData));
 app.post("/repos/", addRepo(getData, setData));
 app.post("/repos/:repo", editRepo(getData, setData));
 app.post("/repos/:repo/branches", addBranch(getData, setData));
-app.post("/repos/:repo/branches/:branch", editBranch(getData, setData));
+app.post("/repos/:repo/branches/:branch(*)", editBranch(getData, setData));
 
 // watch data file and notify clients
 startFileWatcher(setData);
