@@ -3,7 +3,7 @@ import DeleteForm from "./DeleteForm";
 
 const DeleteBranch = ({ branch, hideForm }) => {
   const { parent: repo } = branch;
-  const action = `delete/repo/${repo.name}/branches/${branch.name}`;
+  const action = `delete/repos/${repo.name}/branches/${branch.name}`;
   return (
     <DeleteForm
       action={action}

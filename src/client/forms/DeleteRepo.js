@@ -2,7 +2,7 @@ import React from "react";
 import DeleteForm from "./DeleteForm";
 
 const DeleteRepo = ({ repo, hideForm }) => {
-  const action = `delete/repo/${repo.name}`;
+  const action = `delete/repos/${repo.name}`;
   return (
     <DeleteForm
       action={action}

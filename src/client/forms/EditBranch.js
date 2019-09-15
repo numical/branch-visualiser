@@ -7,7 +7,7 @@ const EditBranch = ({ branch, hideForm }) => {
     <BranchForm
       repo={repo}
       branch={branch}
-      action={`repo/${repo.name}/branches/${branch.name}`}
+      action={`repos/${repo.name}/branches/${branch.name}`}
       label="Edit Branch"
       hideForm={hideForm}
     />

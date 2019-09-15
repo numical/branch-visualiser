@@ -7,7 +7,7 @@ const AddBranch = ({ repo, hideForm }) => (
   <BranchForm
     repo={repo}
     branch={branch}
-    action={`repo/${repo.name}/branches`}
+    action={`repos/${repo.name}/branches`}
     label="Add Branch"
     canEditName={true}
     hideForm={hideForm}
