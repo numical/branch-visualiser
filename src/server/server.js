@@ -10,6 +10,8 @@ const addRepo = require("./routes/addRepo");
 const editRepo = require("./routes/editRepo");
 const addBranch = require("./routes/addBranch");
 const editBranch = require("./routes/editBranch");
+const deleteRepo = require("./routes/deleteRepo");
+const deleteBranch = require("./routes/deleteBranch");
 
 const ports = {
   http: 1971,
@@ -50,6 +52,11 @@ app.post("/repos/", addRepo(getData, setData));
 app.post("/repos/:repo", editRepo(getData, setData));
 app.post("/repos/:repo/branches", addBranch(getData, setData));
 app.post("/repos/:repo/branches/:branch(*)", editBranch(getData, setData));
+app.post("/repos-delete/:repo", deleteRepo(getData, setData));
+app.post(
+  "/repos-delete/:repo/branches/:branch(*)",
+  deleteBranch(getData, setData)
+);
 
 // watch data file and notify clients
 startFileWatcher(setData);
