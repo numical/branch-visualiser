@@ -24,7 +24,7 @@
     "chokidar": "^3.0.2",
     "core-js": "^3.2.1",
     "date-fns": "^2.0.0-beta.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "prop-types": "^15.6.2",
     "ramda": "^0.26.1",
     "react": "^16.4.2",
