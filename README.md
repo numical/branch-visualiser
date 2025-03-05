@@ -14,7 +14,7 @@ npm install
 ## Development
 With hot module replacement:
 ```
-npm run:dev
+npm run dev
 ```
 Then point browser at http://localhost:8080 (if it does not open automatically).
   

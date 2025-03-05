@@ -3,6 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/client/components/App.js",
+  mode: 'development',
   module: {
     rules: [
       {
@@ -32,15 +33,15 @@ module.exports = {
     filename: "branch-visualiser.js"
   },
   devServer: {
-    hot: true,
     open: true,
     port: 8080,
-    proxy: {
-      "/repos": "http://localhost:1971"
-    }
+    proxy: [{
+      context: "/repos",
+      target: "http://localhost:1971"
+    }]
   },
   plugins: [
     new HotModuleReplacementPlugin(),
-    new CopyPlugin([{ from: "static", to: "." }])
+    new CopyPlugin({ patterns: [{ from: "static", to: "." }] })
   ]
 };

@@ -2,7 +2,7 @@ const http = require('http');
 const os = require('os');
 const chokidar = require('chokidar');
 const express = require('express');
-const WebSocket = require('ws');
+const { WebSocketServer } = require('ws');
 const { resolve } = require('path');
 const { readFile } = require('fs');
 
@@ -25,8 +25,8 @@ app.get('/repos', async (req, res) => {
 
 // websockets
 const server = http.createServer(app);
-const wss = new WebSocket.Server({
-  noServer: true,
+const wss = new WebSocketServer({
+  // noServer: true,
   port: ports.ws
 });
 wss.on('connection', function connection(ws) {
