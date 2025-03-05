@@ -1,11 +1,10 @@
 import clone from "ramda/src/clone";
-import parse from "date-fns/parse";
-import compareAsc from "date-fns/compareAsc";
+import { compareAsc, dateToDisplayValue } from "./dateFns";
 
 const addParent = repos => {
   repos.forEach(repo => {
     repo.branches.forEach(branch => {
-      branch.parent = repo.name;
+      branch.parent = repo;
     });
   });
 };
@@ -13,14 +12,14 @@ const addParent = repos => {
 const addLinesToBranch = (allLines, branch) => {
   if (branch.start) {
     branch.startLine = {
-      date: parse(branch.start, "dd/MM/yy", new Date()),
+      date: dateToDisplayValue(branch.start),
       text: branch.start
     };
     allLines.push(branch.startLine);
   }
   if (branch.end) {
     branch.endLine = {
-      date: parse(branch.end, "dd/MM/yy", new Date()),
+      date: dateToDisplayValue(branch.end),
       text: branch.end,
       isEnd: true
     };

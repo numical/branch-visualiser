@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/numical/branch-visualiser#readme",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "chokidar": "^4.0.3",
     "core-js": "^3.41.0",
     "date-fns": "^4.1.0",

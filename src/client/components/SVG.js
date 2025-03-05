@@ -1,11 +1,16 @@
 import React from "react";
 import Repo from "./Repo";
+import { contextMenu } from "react-contexify";
 
 function SVG(props) {
   const { repos, dimensions } = props;
 
   const svgProps = {
     ...dimensions.svg,
+    onClick: event => {
+      contextMenu.show({ id: "svgMenu", event, props });
+      event.stopPropagation();
+    },
     overflow: "auto"
   };
   return (
